@@ -58,15 +58,15 @@ def chat_with_agent():
         # Send the request
         #response = requests.post(API_ENDPOINT, headers=headers, data=json.dumps(payload))
         try:
-            st.write('In try')
+            #st.write('In try')
             response = requests.post(API_ENDPOINT, headers=headers, json=payload, timeout =9000 )
             response.raise_for_status()
             # Display the response
             if response.status_code == 200:
-                st.write("Response status code:"+str(response.status_code))
+            #st.write("Response status code:"+str(response.status_code))
             #Display response in any case
-            st.write("Response:")
-            return response.json()["response"]
+            #st.write("Response:"+str(response.json()))
+                return response.json()['response']
       
         except requests.exceptions.HTTPError as http_err:
             st.write(f"HTTP error occured: {http_err}")
@@ -78,16 +78,26 @@ def chat_with_agent():
         
 
         
-st.title("STEM Lyzr AI App")
+st.title("STEM Lyzr AI App:mortar_board:")
 st.write(
     "Educator AI app for all your STEM Learning"
 )
 
+#message = "Hello this is STEM Lyzr AI agent"
+
 # Create a text input for message
-message = st.text_area("Enter your message", height=100)
+message = st.text_area("Start a conversation or try one of these examples  '1.What are your main features'  2.'How do I get started ?'  3.'What knowledge are you trained on ?'", height=100)
+
 
 # Create a button to send the request
 if st.button("Send"):
-    st.write('Calling chat with agent')
-    st.write('message sent'+message)
-    chat_with_agent()
+    #st.write('Calling chat with agent')
+    #st.write('message sent'+message)
+    st.markdown('---')
+    st.markdown('#### Response::robot_face:')
+    st.toast("Processing... Please wait...", icon='⏳')
+    st.markdown(chat_with_agent())
+    st.toast("Processing complete!", icon='✅')
+    st.markdown('---')
+    #st.write(chat_with_agent())
+
