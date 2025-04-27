@@ -1,6 +1,14 @@
 import streamlit as st
+import requests
+import json
 
-st.title("🎈 My new app")
+# Set API endpoint and API key
+API_ENDPOINT = "https://agent-prod.studio.lyzr.ai/v3/inference/chat/"
+
+
+
+st.title("STEM Lyzr AI App")
 st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+    "Educator AI app for all your STEM Learning"
 )
+
